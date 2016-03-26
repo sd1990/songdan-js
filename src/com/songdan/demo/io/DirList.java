@@ -31,6 +31,6 @@ class DirFilter implements FilenameFilter{
 
     @Override
     public boolean accept(File dir, String name) {
-        return false;
+        return pattern.matcher(name).matches();
     }
 }
