@@ -38,18 +38,5 @@ public class ProcessFiles {
         }
     }
 
-    public static void main(String[] args) {
-        new ProcessFiles(new Strategy() {
-
-            private String regex = ".*\\.java";
-
-            @Override
-            public void process(File file) {
-                if(file.getName().matches(regex)){
-                    System.out.println(file.getName());
-                }
-            }
-        }).start("D:\\workplace\\songdanDemo\\src\\com\\songdan\\demo\\io");
-    }
 
 }
