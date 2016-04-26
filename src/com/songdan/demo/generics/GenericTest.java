@@ -47,6 +47,8 @@ public class GenericTest {
         不能添加元素(除了null)，获取元素通过Objec获取，更灵活的使用参照有限制的泛型通配符
          */
         List<?> list = new ArrayList<>();
+        list = new ArrayList<String>();
+        list = new ArrayList<Integer>();
 //        list.add("hello world");
 //        list.add(123);
         for (Object o : list) {
@@ -54,5 +56,13 @@ public class GenericTest {
         }
     }
 
+    public static void swap(List<?> list, int i, int j) {
+        //        list.set(i, list.set(j, list.get(i)));
+        swapHelper(list, i, j);
+    }
+
+    private static <E> void swapHelper(List<E> list, int i, int j) {
+        list.set(i, list.set(j, list.get(i)));
+    }
 
 }
