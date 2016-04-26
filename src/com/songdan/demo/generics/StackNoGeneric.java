@@ -4,6 +4,7 @@ import java.util.Arrays;
 import java.util.EmptyStackException;
 
 /**
+ * 不带泛型的Stack
  * @author Songdan
  * @date 2016/4/26
  */
