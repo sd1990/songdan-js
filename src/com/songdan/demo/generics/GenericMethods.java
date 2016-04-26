@@ -1,5 +1,7 @@
 package com.songdan.demo.generics;
 
+import java.util.Iterator;
+import java.util.List;
 
 public class GenericMethods {
     public <T> void fun(T t){
@@ -22,6 +24,43 @@ public class GenericMethods {
         System.out.println(x.getClass().getName());
         System.out.println(y.getClass().getName());
         System.out.println(z.getClass().getName());
+    }
+
+    /**
+     * Effective Java 第27条目 泛型方法,此方法使用了递归的类型参数<br/>
+     * 获取列表的最大值<br/>
+     * @param list
+     * @param <E>
+     * @return
+     */
+    public <E extends Comparable<E>> E max(List<E> list) {
+        Iterator<E> iterator = list.iterator();
+        E result = iterator.next();
+        while (iterator.hasNext()) {
+            E e = iterator.next();
+            if (result.compareTo(e) < 0) {
+                result = e;
+            }
+        }
+        return result;
+    }
+
+    /**
+     * Effective Java 第28条目，有限制的泛型通配符，提供了灵活性，遵循PECS原则
+     * @param list
+     * @param <E>
+     * @return
+     */
+    public <E extends Comparable<? super E>> E maxWithLimited(List<? extends E> list) {
+        Iterator<? extends E> iterator = list.iterator();
+        E result = iterator.next();
+        while (iterator.hasNext()) {
+            E e = iterator.next();
+            if (result.compareTo(e) < 0) {
+                result = e;
+            }
+        }
+        return result;
     }
     
     public static void main(String[] args) {
