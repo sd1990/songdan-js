@@ -19,7 +19,7 @@ public class WaxOMatic {
         executorService.submit(waxOff);
         executorService.submit(waxOn);
         try {
-            TimeUnit.SECONDS.sleep(5);
+            TimeUnit.SECONDS.sleep(5000);
         }
         catch (InterruptedException e) {
             e.printStackTrace();
