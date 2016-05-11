@@ -5,6 +5,11 @@ import com.songdan.demo.inherit.Person;
 public class BaseClass {
     private Person p = new Person("father");
 
+    public static void fun(){
+        System.out.println("hello i'm father");
+    }
+
+
     public BaseClass() {
         super();
         System.out.println(this);

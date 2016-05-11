@@ -5,20 +5,25 @@ import com.songdan.demo.inherit.base.BaseClass;
 
 public class SubClass extends BaseClass{
     private Person p = new Person("son");
+    public static void fun(){
+        System.out.println("hello i'm son");
+    }
 
     public SubClass(String name) {
         System.out.println("subclass construct ...");
     }
-       
+
     public void fun(Person p){
         System.out.println("person fun f");
     }
     
     public static void main(String[] args) {
-        SubClass sb= new SubClass("songdan");
-        sb.fun(1);
-        sb.fun("songdan");
-        sb.fun(sb.p);
+            /*SubClass sb= new SubClass("songdan");
+            sb.fun(1);
+            sb.fun("songdan");
+            sb.fun(sb.p);*/
+        SubClass.fun();
+        fun();
     }
     
     @Override

@@ -29,7 +29,7 @@ public class Test7 {
             e.printStackTrace();
         }
         Collections.reverse(list);
-        list.listIterator()
+        list.listIterator();
         ListIterator<String> stringListIterator = list.listIterator(list.size());
         while (stringListIterator.hasPrevious()){
             System.out.println(stringListIterator.previous());
