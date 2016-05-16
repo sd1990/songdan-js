@@ -113,3 +113,20 @@ function formatNumber(num, precision, separator) {
 	}
 	return NaN;
 }
+
+function money2Chinese(money) {
+	//数字对应的中文
+	var dists = ["零","壹","贰","叁","肆","伍","陆","柒","捌","玖"];
+	var units = [["元","万","亿"], ["","十","百","千"]];
+	var s = "";
+	for (var i = 0;money>0&&i<units[0].length;i++) {
+		var p = "";
+		for(var j = 0;money>0&&j<units[1].length;j++) {
+			var left = money % 10;
+			p = dists[left] + units[1][j] + p;
+			money = Math.floor(money/10);
+		}
+		s=p.replace(/(零.)*零$/,'').replace(/^$/,'零')+units[0][i]+s;
+	}
+	return s.replace(/(零.)*零元/,'元').replace(/(零.)+/g,'零').replace(/^$/,'零元')+'整';
+}
