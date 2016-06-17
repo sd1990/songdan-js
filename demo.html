@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="js/util/util.js"></script>
+    <script>
+        var arr = [{
+            "id":"123",
+            "name":"name1",
+            "sons":[{
+                "alias":"son_1",
+                "gender":"male",
+                "address":[{
+                    "first_name":"北京市",
+                    "second_name":"朝阳区",
+                    "address_code":"001"
+                },{
+                    "first_name":"上海市",
+                    "second_name":"浦东区",
+                    "address_code":"002"
+                }]
+            },{
+                "alias":"son_2",
+                "gender":"female",
+                "address":[]
+            }],
+            "address":[{
+                    "first_name":"北京市",
+                    "second_name":"朝阳区",
+                    "address_code":"001"
+                },{
+                    "first_name":"上海市",
+                    "second_name":"浦东区",
+                    "address_code":"002"
+                }]
+        }];
+        var obj =convertArray2Obj(arr,{
+            mapKey:"id",
+            arrKeys:[{
+                        arrKey:"sons",
+                        convertRule:{
+                            mapKey:"alias",
+                            arrKeys:[{
+                                arrKey:"address",
+                                convertRule:{
+                                    mapKey:"address_code",
+                                    arrKeys:[]
+                                }
+                            }]
+                        }
+                    },{
+                        arrKey:"address",
+                        convertRule:{
+                            mapKey:"address_code",
+                            arrKeys:[]
+                        }
+                    }]
+        });
+        console.info(obj);
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>
