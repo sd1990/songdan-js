@@ -130,3 +130,47 @@ function money2Chinese(money) {
 	}
 	return s.replace(/(零.)*零元/,'元').replace(/(零.)+/g,'零').replace(/^$/,'零元')+'整';
 }
+
+
+/**
+ * 把数组按照指定的规则转换为obj<br/>
+ * convertRule:{
+ * 		mapKey:"mapKey",
+ * 		arrKeys:[
+ * 			{
+ * 				arrKey:"arrKey",
+ * 				convertRule:convertRule
+ * 			},
+ * 			...]
+ * 		}
+ * @param array
+ * @param convertRule
+ */
+function convertArray2Obj(array,convertRule) {
+	var mapKey = convertRule.mapKey;
+	if (array.length==0) {
+		return;
+	}
+	var obj = {};
+	array.forEach(function(item) {
+		//键对应的值
+		var mapValue = item[mapKey];
+		obj[mapValue] = item;
+		var arrKeys = convertRule.arrKeys;
+		//为了处理item中有多个数组，所以arrKeys采用对象数组
+		if(arrKeys.length) {
+			arrKeys.forEach(function(arrKey) {
+				//转换数组
+				//获取规则中指定的item对象中要转换的数组
+				var keyName = arrKey.arrKey;
+				var arr = item[keyName];
+				item[keyName] = convertArray2Obj(arr, arrKey.convertRule);
+			})
+		}
+	});
+	return obj;
+}
+
+
+
+
